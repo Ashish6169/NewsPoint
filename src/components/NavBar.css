@@ -1,0 +1,79 @@
+.navbar {
+  background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(9,9,121,1) 23%, rgba(0,212,255,1) 97%);
+  box-shadow: 0 4px 6px rgba(255, 255, 255, 0.1);
+}
+
+.navbar-brand {
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  color: #ffffff;
+  transition: font-family 0.2s ease-in-out, color 0.2s ease-in-out;
+}
+
+
+.nav-link,
+.navbar-brand {
+  color: rgb(255, 255, 255) !important;
+  text-decoration: none;
+}
+
+.nav-link:hover,
+.navbar-brand:hover {
+  color: rgb(255, 255, 255) !important;
+}
+
+.active-brand {
+  font-size: 1.5em;
+  font-weight: bold;
+  color: rgb(255, 255, 255) !important; 
+}
+
+.active-link {
+  font-size: 1.2em;
+  text-decoration: underline;
+  font-weight: bold;
+  color: rgb(219, 72, 72) !important;
+}
+
+
+
+
+
+.logo img {
+  height: 40px;
+  width: 40px;
+  display: inline-block;
+  vertical-align: middle;
+  margin-right: 8px; 
+  border-radius: 50%; 
+}
+
+.navbar-brand:hover {
+  color: #e0e0e0;
+}
+
+.nav-link {
+  color: #ffffff;
+  margin-right: 1rem;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  transition: color 0.2s ease-in-out, font-size 0.2s ease-in-out;
+}
+
+.nav-link:hover {
+  color: #e0e0e0;
+  font-size: 1.1rem;
+}
+
+
+
+.navbar-toggler {
+  border-color: #ffffff;
+}
+
+.navbar-toggler-icon {
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(255, 255, 255, 1)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
+  transition: background-image 0.2s ease-in-out;
+}
+
+.navbar-toggler:hover .navbar-toggler-icon {
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(255, 0, 0, 1)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
+}
