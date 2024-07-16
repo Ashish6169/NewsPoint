@@ -18,32 +18,42 @@ const News = (props) => {
     props.setProgress(10);
     const { country, category, pageSize } = props;
     let url = `https://newsapi.org/v2/top-headlines?country=${country}&category=${category}&apiKey=${process.env.REACT_APP_API}&page=${page}&pageSize=${pageSize}`;
-    let data = await fetch(url);
-    props.setProgress(30);
-    let parsedData = await data.json();
-    props.setProgress(70);
-    setArticles(parsedData.articles);
-    setTotalResults(parsedData.totalResults);
-    setLoading(false);
-    props.setProgress(100);
+    try {
+      let data = await fetch(url);
+      props.setProgress(30);
+      let parsedData = await data.json();
+      props.setProgress(70);
+      setArticles(parsedData.articles);
+      setTotalResults(parsedData.totalResults);
+      setLoading(false);
+      props.setProgress(100);
+    } catch (error) {
+      console.error("Error fetching news:", error);
+      setLoading(false);
+      props.setProgress(100);
+    }
   };
 
   useEffect(() => {
     document.title = `${capitalizeFirstLetter(props.category)} - NewsPoint`;
     updateNews();
-    // eslint-disable-next-line
-  }, []);
+  }, [props.category, page]);
 
   const fetchMoreData = async () => {
     const { country, category, pageSize } = props;
     let url = `https://newsapi.org/v2/top-headlines?country=${country}&category=${category}&apiKey=${process.env.REACT_APP_API}&page=${page + 1}&pageSize=${pageSize}`;
-    setPage(page + 1);
-    setLoading(true);
-    let data = await fetch(url);
-    let parsedData = await data.json();
-    setArticles(articles.concat(parsedData.articles));
-    setTotalResults(parsedData.totalResults);
-    setLoading(false);
+    try {
+      setPage(page + 1);
+      setLoading(true);
+      let data = await fetch(url);
+      let parsedData = await data.json();
+      setArticles(articles.concat(parsedData.articles));
+      setTotalResults(parsedData.totalResults);
+      setLoading(false);
+    } catch (error) {
+      console.error("Error fetching more news:", error);
+      setLoading(false);
+    }
   };
 
   return (
@@ -69,7 +79,7 @@ const News = (props) => {
         dataLength={articles.length}
         next={fetchMoreData}
         hasMore={articles.length !== totalResults}
-        loader={loading && <Spinner />}
+        loader={<Spinner />}
       >
         <div className="container">
           <div className="row">
